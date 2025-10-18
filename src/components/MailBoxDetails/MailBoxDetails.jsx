@@ -12,11 +12,12 @@ if (!selectedBox) {
 }
 
 return (
-    <>
-    <h1>Mailbox {selectedBox._id}</h1>
-    <h2>{selectedBox.boxOwner}</h2>
-    <h2>{selectedBox.boxSize}</h2>
-    </>
+    <div className="mail-box">
+      <h1>Mailbox {selectedBox._id}</h1>
+      <h2>Details</h2>
+      <p>Boxholder: {selectedBox.boxOwner}</p>
+      <p>Box Size: {selectedBox.boxSize}</p>
+    </div>
 )
 };
 
