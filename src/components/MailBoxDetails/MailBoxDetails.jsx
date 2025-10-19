@@ -18,7 +18,7 @@ if (!selectedBox) {
 }
 
 return (
-    <>
+    <main className="mailbox-details-container">
         <div className="mail-box">
             <h1>Mailbox {selectedBox._id}</h1>
             <h2>Details</h2>
@@ -29,12 +29,12 @@ return (
             <h2>Letters</h2>
             {selectedLetters?.map((letter) => (
                 <div key={letter._id} className="letter-card">
-                    <p>To: {letter.recipient}</p>
+                    <p>From: {letter.recipient}</p>
                     <p>{letter.message}</p>
                 </div>
             ))}
         </div>
-    </>
+    </main>
 )
 };
 

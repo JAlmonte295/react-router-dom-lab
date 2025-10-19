@@ -28,8 +28,8 @@ const NewLetter = (props) => {
     return (
         <main>
         <h1>New Letter</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="to">To</label>
+        <form onSubmit={handleSubmit} autoComplete="off">
+            <label htmlFor="recipient">From</label>
             <input
                 type="text"
                 name="recipient"

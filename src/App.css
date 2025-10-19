@@ -1,42 +1,282 @@
-#root {
-  max-width: 1280px;
+/* /Users/joanalmontenunez/code/ga/labs/react-router-dom-lab/src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+  --po-blue: #003366;
+  --po-red: #d72c2c;
+  --po-cream: #f5f5dc;
+  --po-cream-rgb: 245, 245, 220;
+  --po-light-gray: #e0e0e0;
+  --po-dark-gray: #333;
+}
+
+body {
+  background-color: var(--po-cream);
+  /* A semi-transparent cream overlay on top of the background image */
+  background-image: linear-gradient(rgba(var(--po-cream-rgb), 0.8), rgba(var(--po-cream-rgb), 0.8)), url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: var(--po-dark-gray);
+  margin: 0;
+}
+
+h1, h2 {
+  font-family: 'Merriweather', serif;
+  color: var(--po-blue);
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
   margin: 0 auto;
+}
+
+/* Home Page Styling */
+.home-page {
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.home-page p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.action-card {
+  background-color: white;
   padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--po-light-gray);
+  flex: 1;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.action-card h2 {
+  margin-top: 0;
+  color: red;
+}
+
+.action-card .btn {
+  margin-top: 1rem;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+/* NavBar Styling */
+nav {
+  background-color: var(--po-blue);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: red;
+  
+}
+
+/* Responsive NavBar for mobile */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--po-light-gray);
+}
+
+form label {
+  font-weight: 500;
+  color: var(--po-blue);
+}
+
+form input,
+form select,
+form textarea {
+  padding: 0.8rem;
+  border: 1px solid var(--po-light-gray);
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button[type="submit"] {
+  background-color: var(--po-red);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form button[type="submit"]:hover {
+  background-color: #b92424;
+}
+
+.btn, form button[type="submit"] {
+  display: inline-block;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Mailbox List & Grid Styling */
+.mailbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.large-boxes-container {
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 768px) {
+  .large-boxes-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .large-boxes-container .mailbox-group:has(.mailbox-medium) {
+    flex-basis: 40%;
+  }
+  .large-boxes-container .mailbox-group:has(.mailbox-large) {
+    flex-basis: 60%;
   }
 }
-
-.card {
-  padding: 2em;
+.mailbox-group-title {
+  border-bottom: 3px solid var(--po-blue);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+.no-mailboxes-message {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 500px;
+  border: 1px solid var(--po-light-gray);
+}
+
+/* Mailbox Details Styling */
+.mailbox-details-container .mail-box {
+  text-align: center;
+}
+
+.mailbox-details-container .mail-box h1 {
+  color: var(--po-red);
+}
+
+/* Mailbox Styling */
+.mail-box {
+  background: linear-gradient(145deg, #c7c7c7, #f0f0f0);
+  border: 2px solid #5a5a5a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.mailbox-grid .mail-box {
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  color: red;
+  font-family: 'Merriweather', serif;
+  
+}
+
+.mailbox-medium {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.mailbox-large {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.mailbox-grid .mail-box:hover {
+  transform: translateY(-5px);
+}
+
+.mail-box h1 {
+  margin-top: 0;
+}
+
+.letters-list {
+  margin-top: 2rem;
+}
+
+.letter-card {
+  background-color: #fff;
+  border: 1px solid var(--po-light-gray);
+  border-left: 5px solid var(--po-red);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.letter-card p {
+  margin: 0.5rem 0;
+}
+
+.letter-card p:first-child {
+  font-weight: bold;
 }

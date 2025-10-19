@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import MailBoxList from "./components/MailBoxList/MailBoxList.jsx";
@@ -29,7 +29,29 @@ const addLetter = (newLetter) => {
     <>
     <NavBar />
     <Routes>
-      <Route path="/" element={<main><h1>Post Office</h1></main>} />
+      <Route path="/" element={
+        <main className="home-page">
+          <h1>Welcome to the Post Office</h1>
+          <p>Your one-stop shop for creating and managing mailboxes and letters.</p>
+          <div className="home-actions">
+            <div className="action-card">
+              <h2>New Mailbox</h2>
+              <p>
+                Need a place to receive your mail? Rent a new mailbox with us today.
+                Choose from various sizes to fit your needs.
+              </p>
+              <Link to="/new-mailbox" className="btn">Rent a New Mailbox</Link>
+            </div>
+            <div className="action-card">
+              <h2>New Letter</h2>
+              <p>
+                Ready to send a letter? Write and dispatch your messages to any
+                mailbox in our system.
+              </p>
+              <Link to="/new-letter" className="btn">Send a Letter</Link>
+            </div>
+          </div>
+        </main>} />
       <Route path="/mailboxes" element={<MailBoxList mailboxes={mailboxes} />} />
       <Route path="/new-mailbox" element={<MailBoxForm addBox={addBox} mailboxes={mailboxes} />} />
       <Route path="/mailboxes/:mailboxid" element={<MailBoxDetails mailboxes={mailboxes} letters={letters} />} />
